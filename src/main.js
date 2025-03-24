@@ -9,8 +9,8 @@ function onSumbit(event) {
   event.preventDefault();
   const form = event.currentTarget;
   refs.gallery.innerHTML = "";
-  console.log(form.elements[0].value.trim().length === 0);
   debugger;
+  console.log(form.elements[0].value.trim().length === 0);
   if (form.elements[0].value.trim().length === 0) {
     iziToast.warning({
       message: "Sorry, there are no keywords. Please enter them.",
