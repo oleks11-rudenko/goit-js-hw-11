@@ -55,3 +55,8 @@ export function renderMarkup(gallery, pictures) {
   });
   lightbox.refresh();
 }
+
+export function clearGallery(gallery) {
+  gallery = document.querySelector(".gallery");
+  gallery.innerHTML = "";
+}

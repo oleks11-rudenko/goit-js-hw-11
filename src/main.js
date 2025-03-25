@@ -1,5 +1,5 @@
 import { requestData } from "./js/pixabay-api";
-import { renderMarkup } from "./js/render-functions";
+import { renderMarkup, clearGallery } from "./js/render-functions";
 
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
@@ -16,7 +16,7 @@ function onSumbit(event) {
   event.preventDefault();
   const form = event.currentTarget;
 
-  if (form.elements[0].value.trim().length === 0) {
+  if (!form.elements[0].value.trim()) {
     iziToast.warning({
       message: "Sorry, there are no keywords. Please enter them.",
       position: "topRight",
@@ -25,7 +25,8 @@ function onSumbit(event) {
   }
 
   refs.loader.classList.remove("hidden");
-  refs.gallery.innerHTML = "";
+  clearGallery(refs.gallery);
+
   requestData(form.elements[0].value)
     .then(images => {
       if (images.hits.length === 0) {
